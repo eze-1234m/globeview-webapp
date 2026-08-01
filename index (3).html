@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Globeview Investments &amp; Securities Ltd — Objectivity, Verified.</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Work+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #16233A;
+    --navy-soft: #1F3A5C;
+    --steel: #4A76A8;
+    --green: #2E6B4F;
+    --brass: #A9822F;
+    --paper: #EEF1F5;
+    --paper-warm: #F6F4EF;
+    --white: #FFFFFF;
+    --ink: #16233A;
+    --ink-soft: #4A5568;
+    --line: #D7DCE3;
+    --max-w: 1180px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Work Sans', sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  img, svg { display: block; max-width: 100%; }
+
+  .wrap {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  h1, h2, h3, .display {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--navy);
+  }
+
+  /* ---------- Ledger rule (signature element) ---------- */
+  .ledger-rule {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .ledger-rule::before,
+  .ledger-rule::after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    background: var(--navy);
+  }
+  .ledger-rule::after { height: 1px; background: var(--line); margin-top: 3px; align-self: flex-start;}
+  .ledger-rule-simple {
+    height: 1px;
+    background: var(--line);
+    position: relative;
+  }
+  .ledger-rule-simple::after {
+    content: "";
+    position: absolute;
+    top: 4px; left: 0;
+    height: 1px;
+    width: 64px;
+    background: var(--brass);
+  }
+
+  /* ---------- Header ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(238,241,245,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .brand-logo {
+    height: 42px;
+    width: auto;
+  }
+  .brand-text .name {
+    font-family: 'Cinzel', serif;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--navy);
+    line-height: 1.1;
+  }
+  .brand-text .sub {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  nav ul {
+    display: flex;
+    gap: 34px;
+    list-style: none;
+  }
+  nav a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    position: relative;
+    padding-bottom: 4px;
+  }
+  nav a:hover { color: var(--navy); }
+  .nav-cta {
+    background: var(--navy);
+    color: var(--white) !important;
+    padding: 10px 20px;
+    border-radius: 2px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+  .nav-cta:hover { background: var(--navy-soft); }
+  .mobile-toggle { display: none; }
+
+  /* ---------- Eyebrow strip ---------- */
+  .eyebrow-strip {
+    background: var(--navy);
+    color: #C9D6E5;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 9px 0;
+  }
+  .eyebrow-strip span { color: var(--brass); margin: 0 10px; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: 96px 0 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -120px; right: -160px;
+    width: 480px; height: 480px;
+    border-radius: 50%;
+    border: 1px solid rgba(22,35,58,0.08);
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    top: -80px; right: -120px;
+    width: 480px; height: 480px;
+    border-radius: 50%;
+    border: 1px solid rgba(22,35,58,0.06);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 64px;
+    align-items: end;
+    position: relative;
+  }
+  .hero-eyebrow {
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green);
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: 46px;
+    line-height: 1.18;
+    margin-bottom: 22px;
+    max-width: 640px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--steel);
+  }
+  .hero p.lede {
+    font-size: 17px;
+    color: var(--ink-soft);
+    max-width: 480px;
+    margin-bottom: 34px;
+  }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    padding: 14px 26px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    transition: all .15s ease;
+  }
+  .btn-primary { background: var(--navy); color: var(--white); }
+  .btn-primary:hover { background: var(--navy-soft); }
+  .btn-outline { border-color: var(--navy); color: var(--navy); }
+  .btn-outline:hover { background: var(--navy); color: var(--white); }
+
+  .hero-panel {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--brass);
+    padding: 30px 28px;
+  }
+  .hero-panel .tag {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+  }
+  .hero-panel blockquote {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--navy);
+    font-weight: 500;
+  }
+  .hero-panel .attrib {
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ---------- Trust bar ---------- */
+  .trust-bar {
+    background: var(--white);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 26px 0;
+  }
+  .trust-bar .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+  .trust-item {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .trust-item strong {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--navy);
+    font-size: 13px;
+  }
+
+  /* ---------- Section shell ---------- */
+  section { padding: 92px 0; }
+  .section-head {
+    max-width: 620px;
+    margin-bottom: 52px;
+  }
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .section-head h2 { font-size: 32px; line-height: 1.25; margin-bottom: 14px; }
+  .section-head p { color: var(--ink-soft); font-size: 15.5px; }
+
+  /* ---------- Services ---------- */
+  .services-list { border-top: 1px solid var(--line); }
+  .service-row {
+    display: grid;
+    grid-template-columns: 260px 1fr 140px;
+    gap: 32px;
+    align-items: start;
+    padding: 34px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .service-row h3 {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .service-row .svc-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--brass);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .service-row p {
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    max-width: 480px;
+  }
+  .service-row .svc-arrow {
+    text-align: right;
+    color: var(--steel);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    align-self: center;
+  }
+
+  /* ---------- Case study ---------- */
+  .case-study {
+    background: var(--navy);
+    color: #E4E9F0;
+  }
+  .case-study .section-head .eyebrow { color: var(--brass); }
+  .case-study .section-head h2, .case-study h3 { color: var(--white); }
+  .case-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .case-narrative p { color: #C9D3E0; margin-bottom: 18px; font-size: 15.5px; }
+  .case-steps { display: flex; flex-direction: column; gap: 0; }
+  .case-step {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+  .case-step:first-child { border-top: 1px solid rgba(255,255,255,0.12); }
+  .case-step .mark {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--brass);
+    margin-top: 6px;
+  }
+  .case-step h4 {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14.5px;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .case-step p { color: #A9B4C4; font-size: 13.5px; }
+
+  /* ---------- Approach / positioning ---------- */
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .approach-card {
+    background: var(--paper-warm);
+    padding: 34px 28px;
+  }
+  .approach-card .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--brass);
+    margin-bottom: 14px;
+  }
+  .approach-card h3 { font-size: 17px; margin-bottom: 10px; }
+  .approach-card p { color: var(--ink-soft); font-size: 14px; }
+
+  /* ---------- Testimonial placeholder ---------- */
+  .testimonial-slot {
+    border: 1px dashed var(--line);
+    background: var(--white);
+    padding: 40px 36px;
+    text-align: center;
+  }
+  .testimonial-slot .icon { font-size: 22px; color: var(--brass); margin-bottom: 14px; font-family: 'Cinzel', serif;}
+  .testimonial-slot p { color: var(--ink-soft); font-size: 14.5px; max-width: 480px; margin: 0 auto; }
+
+  /* ---------- Calculator ---------- */
+  .calc-section { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .calc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+  .calc-form label {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+    margin-top: 20px;
+  }
+  .calc-form label:first-child { margin-top: 0; }
+  .calc-form input[type="range"] {
+    width: 100%;
+    accent-color: var(--navy);
+  }
+  .calc-row-value {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .calc-row-value .v { font-size: 15px; color: var(--navy); font-weight: 600; }
+  .calc-result {
+    background: var(--paper-warm);
+    border-left: 3px solid var(--brass);
+    padding: 30px 28px;
+  }
+  .calc-result .r-label {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+  }
+  .calc-result .r-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 34px;
+    color: var(--navy);
+    font-weight: 600;
+    margin-bottom: 22px;
+  }
+  .calc-result .r-note { font-size: 12.5px; color: var(--ink-soft); line-height: 1.6; }
+
+  /* ---------- Contact ---------- */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+  .contact-form input, .contact-form textarea {
+    width: 100%;
+    border: 1px solid var(--line);
+    background: var(--white);
+    padding: 13px 14px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 14px;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+  .contact-form textarea { min-height: 110px; resize: vertical; }
+  .contact-form input:focus, .contact-form textarea:focus {
+    outline: 2px solid var(--steel);
+    outline-offset: 1px;
+  }
+  .contact-list { display: flex; flex-direction: column; gap: 22px; }
+  .contact-item {
+    display: flex;
+    gap: 16px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+  .contact-item .ci-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brass);
+    width: 110px;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+  .contact-item .ci-value { font-size: 15px; color: var(--navy); font-weight: 500; }
+  .contact-item .ci-note { font-size: 12.5px; color: var(--ink-soft); margin-top: 3px; }
+  .placeholder-flag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    background: #FBEFD8;
+    color: var(--brass);
+    padding: 2px 6px;
+    margin-left: 8px;
+    border-radius: 2px;
+    vertical-align: middle;
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    background: var(--navy);
+    color: #A9B4C4;
+    padding: 50px 0 28px;
+  }
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding-bottom: 34px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    margin-bottom: 24px;
+  }
+  .footer-brand .name { font-family: 'Cinzel', serif; color: var(--white); font-size: 18px; letter-spacing: 0.05em; margin-bottom: 8px; }
+  .footer-brand p { font-size: 13px; max-width: 300px; }
+  .footer-links { display: flex; gap: 60px; flex-wrap: wrap; }
+  .footer-col h4 {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin-bottom: 14px;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+  .footer-col a { font-size: 13.5px; color: #C9D3E0; }
+  .footer-col a:hover { color: var(--white); }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #7A8AA0;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    nav ul { display: none; }
+    .mobile-toggle { display: block; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 34px; }
+    .case-grid, .calc-grid, .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+    .approach-grid { grid-template-columns: 1fr; }
+    .service-row { grid-template-columns: 1fr; gap: 10px; }
+    .service-row .svc-arrow { text-align: left; }
+    .trust-bar .wrap { justify-content: flex-start; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--steel);
+    outline-offset: 2px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <img src="globeview-logo.png" alt="Globeview Investments & Securities Ltd" class="brand-logo">
+      <span class="brand-text">
+        <span class="name">GLOBEVIEW</span><br>
+        <span class="sub">Investments &amp; Securities Ltd</span>
+      </span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#case-study">Track Record</a></li>
+        <li><a href="#approach">Approach</a></li>
+        <li><a href="#calculator">Tools</a></li>
+      </ul>
+    </nav>
+    <a href="#contact" class="nav-cta">Book a Consultation</a>
+  </div>
+</header>
+
+<div class="eyebrow-strip">
+  Investment Advisory <span>·</span> Commodity Trading <span>·</span> Consultancy <span>·</span> Training
+</div>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="hero-eyebrow">Objectivity, Verified</div>
+        <h1>We catch what your bank hopes you <em>won't notice.</em></h1>
+        <p class="lede">Independent financial advisory and consultancy built on one principle: verify before you trust. Globeview reviews, audits, and represents your interests where institutions expect you not to look closely.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Book a Consultation</a>
+          <a href="#services" class="btn btn-outline">View Services</a>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <div class="tag">From Our Track Record</div>
+        <blockquote>"Identified regulatory non-compliance and contractual breach — recovered the client's funds directly from the bank."</blockquote>
+        <div class="attrib">— Case Summary, see Track Record ↓</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="trust-bar">
+    <div class="wrap">
+      <div class="trust-item">Registration: <strong>RC 788388</strong></div>
+      <div class="trust-item">Structure: <strong>Registered Limited Company</strong></div>
+      <div class="trust-item">Team: <strong>Core team, assembled per project</strong></div>
+      <div class="trust-item">Clients: <strong>Individuals &amp; Corporates</strong></div>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">What We Do</div>
+        <h2>Four disciplines, one standard of scrutiny.</h2>
+        <p>Every engagement — whether advisory, trading, consulting, or training — is held to the same standard: verify the facts before you act on them.</p>
+      </div>
+      <div class="services-list">
+        <div class="service-row">
+          <div>
+            <span class="svc-tag">Advisory</span>
+            <h3>Investment Advisory</h3>
+          </div>
+          <p>Independent guidance on financial decisions, structured around your actual position — not a product a bank wants to sell you.</p>
+          <div class="svc-arrow">→</div>
+        </div>
+        <div class="service-row">
+          <div>
+            <span class="svc-tag">Trading</span>
+            <h3>Commodity Trading</h3>
+          </div>
+          <p>Execution and positioning support in commodity markets, backed by direct market access and disciplined risk review.</p>
+          <div class="svc-arrow">→</div>
+        </div>
+        <div class="service-row">
+          <div>
+            <span class="svc-tag">Consultancy</span>
+            <h3>Corporate Consultancy</h3>
+          </div>
+          <p>Compliance review, contractual audit, and recovery support for businesses navigating financial institutions and regulatory frameworks.</p>
+          <div class="svc-arrow">→</div>
+        </div>
+        <div class="service-row">
+          <div>
+            <span class="svc-tag">Training</span>
+            <h3>Financial Training</h3>
+          </div>
+          <p>Practical financial literacy and compliance training for teams and individuals who want to stop relying on someone else to check the fine print.</p>
+          <div class="svc-arrow">→</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="case-study" class="case-study">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Track Record</div>
+        <h2>A recent engagement: recovering funds a bank hoped would go unnoticed.</h2>
+      </div>
+      <div class="case-grid">
+        <div class="case-narrative">
+          <p>A client's funds were exposed to risk through a bank's non-compliance with regulatory guidelines and a breach of contractual terms — resulting in direct financial loss.</p>
+          <p>Globeview was engaged to review the case, establish exactly where the institution had failed to meet its obligations, and pursue recovery on the client's behalf.</p>
+          <p>The outcome: the non-compliance and contractual breach were formally identified, and the client's funds were recovered from the affected bank.</p>
+        </div>
+        <div class="case-steps">
+          <div class="case-step">
+            <div class="mark"></div>
+            <div>
+              <h4>Review</h4>
+              <p>Full audit of the client's records against the bank's regulatory and contractual obligations.</p>
+            </div>
+          </div>
+          <div class="case-step">
+            <div class="mark"></div>
+            <div>
+              <h4>Identify</h4>
+              <p>Pinpointed specific non-compliance with regulatory guidelines and a breach of contract.</p>
+            </div>
+          </div>
+          <div class="case-step">
+            <div class="mark"></div>
+            <div>
+              <h4>Recover</h4>
+              <p>Represented the client directly with the bank to secure the refund of affected funds.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="approach">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Why Clients Stay</div>
+        <h2>Objectivity is the whole service.</h2>
+        <p>Clients return — and refer others — for the same three reasons, in their own words.</p>
+      </div>
+      <div class="approach-grid">
+        <div class="approach-card">
+          <div class="num">01</div>
+          <h3>Objectivity</h3>
+          <p>No product to sell, no commission tied to a specific outcome — advice built around what actually serves the client.</p>
+        </div>
+        <div class="approach-card">
+          <div class="num">02</div>
+          <h3>Referral-Driven</h3>
+          <p>Most new clients arrive through direct referral from someone Globeview has already represented.</p>
+        </div>
+        <div class="approach-card">
+          <div class="num">03</div>
+          <h3>Verified Outcomes</h3>
+          <p>Track record backed by documented recoveries and resolutions, not projected returns.</p>
+        </div>
+      </div>
+      <div style="height:40px"></div>
+      <div class="testimonial-slot">
+        <div class="icon">"</div>
+        <p>Client testimonials are being collected and will appear here. Globeview's existing clients have agreed to provide referral quotes — reserved space, pending final copy.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="calculator" class="calc-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Plan Ahead</div>
+        <h2>Estimate the value of consistent investing.</h2>
+        <p>A simple projection tool — not financial advice. Book a consultation for guidance specific to your position.</p>
+      </div>
+      <div class="calc-grid">
+        <div class="calc-form">
+          <label for="principal">Starting Amount <span class="calc-row-value"><span></span><span class="v" id="principalVal">₦500,000</span></span></label>
+          <input type="range" id="principal" min="50000" max="20000000" step="50000" value="500000">
+
+          <label for="monthly">Monthly Contribution <span class="calc-row-value"><span></span><span class="v" id="monthlyVal">₦50,000</span></span></label>
+          <input type="range" id="monthly" min="0" max="2000000" step="10000" value="50000">
+
+          <label for="years">Time Horizon <span class="calc-row-value"><span></span><span class="v" id="yearsVal">10 years</span></span></label>
+          <input type="range" id="years" min="1" max="30" step="1" value="10">
+
+          <label for="rate">Estimated Annual Return <span class="calc-row-value"><span></span><span class="v" id="rateVal">8%</span></span></label>
+          <input type="range" id="rate" min="1" max="20" step="0.5" value="8">
+        </div>
+        <div class="calc-result">
+          <div class="r-label">Projected Value</div>
+          <div class="r-value" id="resultVal">₦0</div>
+          <div class="r-note">Calculated using standard compound growth on your starting amount plus monthly contributions, compounded annually. This is a planning estimate only — actual returns depend on the instruments used and market conditions, and are not guaranteed. Speak with Globeview before acting on this projection.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Get In Touch</div>
+        <h2>Book a consultation.</h2>
+        <p>Reach out directly, or send details below and Globeview will follow up.</p>
+      </div>
+      <div class="contact-grid">
+        <form class="contact-form" name="contact" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="contact">
+          <label for="fname" style="font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-bottom:8px;">Full Name</label>
+          <input type="text" id="fname" name="name" required>
+          <label for="femail" style="font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-bottom:8px;">Email or Phone</label>
+          <input type="text" id="femail" name="contact-info" required>
+          <label for="fmsg" style="font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-bottom:8px;">What can Globeview help with?</label>
+          <textarea id="fmsg" name="message" required></textarea>
+          <button type="submit" class="btn btn-primary" style="border:none;cursor:pointer;">Send Message</button>
+        </form>
+        <div class="contact-list">
+          <div class="contact-item">
+            <div class="ci-label">Phone</div>
+            <div>
+              <div class="ci-value"><a href="tel:+2348023165431">+234 802 316 5431</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-label">WhatsApp</div>
+            <div>
+              <div class="ci-value"><a href="https://wa.me/2348023165431" target="_blank" rel="noopener">+234 802 316 5431</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-label">Email</div>
+            <div>
+              <div class="ci-value">[ Insert current email ]<span class="placeholder-flag">EDIT ME</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="globeview-logo.png" alt="Globeview Investments & Securities Ltd" style="height:36px;width:auto;filter:brightness(0) invert(1);opacity:0.9;margin-bottom:14px;">
+        <div class="name">GLOBEVIEW</div>
+        <p>Investments &amp; Securities Ltd — Independent financial advisory, commodity trading, consultancy, and training. RC 788388.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#case-study">Track Record</a></li>
+            <li><a href="#approach">Approach</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="#contact">Book a Consultation</a></li>
+            <li><a href="#calculator">Planning Tool</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Globeview Investments &amp; Securities Ltd. RC 788388.</span>
+      <span>Site built for Globeview — edit contact details before publishing.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Calculator logic
+  const principal = document.getElementById('principal');
+  const monthly = document.getElementById('monthly');
+  const years = document.getElementById('years');
+  const rate = document.getElementById('rate');
+
+  const principalVal = document.getElementById('principalVal');
+  const monthlyVal = document.getElementById('monthlyVal');
+  const yearsVal = document.getElementById('yearsVal');
+  const rateVal = document.getElementById('rateVal');
+  const resultVal = document.getElementById('resultVal');
+
+  function fmtNaira(n) {
+    return '₦' + Math.round(n).toLocaleString('en-NG');
+  }
+
+  function calculate() {
+    const p = parseFloat(principal.value);
+    const m = parseFloat(monthly.value);
+    const y = parseFloat(years.value);
+    const r = parseFloat(rate.value) / 100;
+
+    principalVal.textContent = fmtNaira(p);
+    monthlyVal.textContent = fmtNaira(m);
+    yearsVal.textContent = y + (y == 1 ? ' year' : ' years');
+    rateVal.textContent = rate.value + '%';
+
+    // annual compounding, monthly contributions added within each year
+    let total = p;
+    for (let i = 0; i < y; i++) {
+      total = total * (1 + r) + (m * 12);
+    }
+    resultVal.textContent = fmtNaira(total);
+  }
+
+  [principal, monthly, years, rate].forEach(el => el.addEventListener('input', calculate));
+  calculate();
+</script>
+
+</body>
+</html>
